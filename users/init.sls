@@ -250,7 +250,7 @@ users_{{ name }}_{{ key_name }}_key:
       {% else %}
     - mode: '0600'
       {% endif %}
-    - show_diff: False
+    - show_changes: False
     {%- set key_value = salt['pillar.get']('users:'+name+':ssh_keys:'+_key) %}
     {%- if 'salt://' in key_value[:7] %}
     - source: {{ key_value }}
@@ -306,7 +306,7 @@ user_ssh_keys_files_{{ name }}_{{ key_name }}_private_key:
     - user: {{ name }}
     - group: {{ user_group }}
     - mode: '0600'
-    - show_diff: False
+    - show_changes: False
     - contents_pillar: {{ pillar_name }}:{{ key_name }}:privkey
     - require:
       - user: users_{{ name }}_user
@@ -319,7 +319,7 @@ user_ssh_keys_files_{{ name }}_{{ key_name }}_public_key:
     - user: {{ name }}
     - group: {{ user_group }}
     - mode: '0644'
-    - show_diff: False
+    - show_changes: False
     - contents_pillar: {{ pillar_name }}:{{ key_name }}:pubkey
     - require:
       - user: users_{{ name }}_user
