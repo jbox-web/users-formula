@@ -171,7 +171,10 @@ users:
         55555555
     # unique: true allows user to have non unique uid
     unique: false
-    uid: 1001
+    # Away from the sequential range useradd allocates: with the image's
+    # `kitchen` user on 1000, auser gets 1001 and a shared uid makes the owner
+    # of buser's home read back as auser.
+    uid: 2001
 
     user_files:
       enabled: true
