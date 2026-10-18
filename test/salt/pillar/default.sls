@@ -57,7 +57,8 @@ users:
     allow_gid_change: false
     manage_bashrc: false
     manage_profile: false
-    expire: 16426
+    # No `expire`: an expired account cannot be impersonated (`su`) by the
+    # states that manage its home with Salt 3008, and VEILLECO sets none.
     # Disables user management except sudo rules.
     # Useful for setting sudo rules for system accounts created by package instalation
     sudoonly: false
